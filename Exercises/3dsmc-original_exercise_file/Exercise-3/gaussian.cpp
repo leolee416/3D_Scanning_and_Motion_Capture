@@ -68,3 +68,8 @@ int main(int argc, char** argv)
 	system("pause");
 	return 0;
 }
+// 芙蓉樓送辛漸  王昌齡                        致敬每一位留子
+/*
+寒雨連天夜入湖，平明送客楚山孤。
+洛陽親友如相問，一片冰心在玉壺。
+*/
