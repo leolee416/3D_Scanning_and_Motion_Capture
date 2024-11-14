@@ -15,7 +15,7 @@ struct GaussianCostFunction
 		// TODO: Implement the cost function
 		residual[0] = point.y - ceres::exp(-(ceres::pow(point.x - mu[0], T(2)) / (T(2) * ceres::pow(sigma[0], T(2)))));
 		//其实应该多加一项控制缩放
-		//residual[0] = point.y - a[0]ceres::exp(-(ceres::pow(point.x - mu[0], T(2)) / (T(2) * ceres::pow(sigma[0], T(2)))));
+		//residual[0] = point.y - a[0]*ceres::exp(-(ceres::pow(point.x - mu[0], T(2)) / (T(2) * ceres::pow(sigma[0], T(2)))));
 		return true;
 	}
 
