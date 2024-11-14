@@ -8,22 +8,22 @@
 // TODO: Implement the cost function (check gaussian.cpp for reference)
 struct RegistrationCostFunction
 {
-	RegistrationCostFunction(const Point2D& point1_, const Point2D& point2_, const auto& weight_)
+	RegistrationCostFunction(const Point2D& point1_, const Point2D& point2_,  const Weight& weight_)
 		: point1(point1_), point2(point2_), weight(weight_)
 		{
 		}
 		
 		template<typename T>
-		bool operator()(const T* const theta, const T* const tx, const T* const ty, T* residual) const 
+		bool operator()(const T* const angle, const T* const tx, const T* const ty, T* residual) const 
 		{
 			T x1_ = T (point1.x);
 			T y1_ = T (point1.y);
 			T x2_ = T (point2.x);
 			T y2_ = T (point2.y);
-			T w_  = T (weight);
+			T w_  = T (weight.w);
 
-			residual[0] = w_ * (ceres::pow(( ceres::cos(theta[0]) * x1_ - ceres::sin(theta[0]) * y1_ + tx[0] - x2_) ,2) 
-							  + ceres::pow(( ceres::sin(theta[0]) * x1_ + ceres::cos(theta[0]) * y1_ + ty[0] - y2_), 2));
+			residual[0] = w_ * (ceres::pow(( ceres::cos(angle[0]) * x1_ - ceres::sin(angle[0]) * y1_ + tx[0] - x2_) ,2) 
+							  + ceres::pow(( ceres::sin(angle[0]) * x1_ + ceres::cos(angle[0]) * y1_ + ty[0] - y2_), 2));
 			return true;
 			
 		}
@@ -31,7 +31,7 @@ struct RegistrationCostFunction
 private:
 	const Point2D point1;
 	const Point2D point2;
-	const float weight;
+	const Weight weight;
 };
 
 
@@ -60,11 +60,13 @@ int main(int argc, char** argv)
 	ceres::Problem problem;
 
 	// TODO: For each weighted correspondence create one residual block (check gaussian.cpp for reference)
-	for (auto& wi : weights)
-	{
+for (size_t i = 0; i < weights.size(); ++i)	{
 		problem.AddResidualBlock(
-
-		)
+			new ceres::AutoDiffCostFunction<RegistrationCostFunction, 1, 1, 1, 1 >(
+				new RegistrationCostFunction(points1[i], points2[i], weights[i])
+			),
+			nullptr, &angle, &tx, &ty
+		);
 	}
 
 
