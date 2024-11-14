@@ -72,7 +72,9 @@ int main(int argc, char** argv)
 
 				problem.AddResidualBlock(
 					new ceres::AutoDiffCostFunction<RegistrationCostFunction, 1, 1, 1, 1>(  // 第一个1 代表残差维度是1
-						new RegistrationCostFunction(points1[i], points2[i], weights)
+						new RegistrationCostFunction(points2[i], points1[i], weights) 
+					// 卧槽 这个b点我得多试几次 我哪里知道谁先谁后呀况且这个weight估计是老师自己已经拟合好的数据所以point12必须有个先后顺序，只能画图试试
+					//很可惜 我的matlabTUM证书居然过期了， ，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，
 					),
 					nullptr, &angle, &tx, &ty
 				);
