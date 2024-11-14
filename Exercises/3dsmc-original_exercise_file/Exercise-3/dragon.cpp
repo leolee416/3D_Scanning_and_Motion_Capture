@@ -23,14 +23,14 @@ struct RegistrationCostFunction
 		 // 对于每个weight 都要计算残差并且求和才是一2dpoint的残差值{from结构体}
 		for (const auto& weight : weights) {
         	// 遍历 Weight 中的每个权重值
-        	for (const auto& single_weight : weight.w) {
-            	residual[0] += single_weight * ceres::pow(
-                (ceres::cos(angle[0]) * point1.x - ceres::sin(angle[0]) * point1.y + tx[0] - point2.x) +
-                (ceres::sin(angle[0]) * point1.x + ceres::cos(angle[0]) * point1.y + ty[0] - point2.y),
-                T(2.0)
-            	);
-        	}
-    	}
+        		for (const auto& single_weight : weight.w) {
+            			residual[0] += single_weight * ceres::pow(
+               		        (ceres::cos(angle[0]) * point1.x - ceres::sin(angle[0]) * point1.y + tx[0] - point2.x) +
+                                (ceres::sin(angle[0]) * point1.x + ceres::cos(angle[0]) * point1.y + ty[0] - point2.y),
+                                 T(2.0)
+            	                );
+        	        }
+    	        }
 
 		return true;
 	}
