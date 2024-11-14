@@ -12,7 +12,7 @@ struct SurfaceCostFunction
 	}
 
 	template<typename T>
-	bool operator()(const T* const c, const T* const a, const T* const b, T* residual) const
+	bool operator()(const T* const a, const T* const b, const T* const c, T* residual) const
 	{
 		// TODO: Implement the cost function
 		//residual[0] = point.y - ceres::exp(-(ceres::pow(point.x - mu[0], T(2)) / (T(2) * ceres::pow(sigma[0], T(2)))));;
@@ -26,16 +26,16 @@ private:
 
 
 int main(int argc, char** argv)
-{
+{d
 	google::InitGoogleLogging(argv[0]);
 
 	// Read 3D surface data points and define the parameters of the problem
 	const std::string file_path = "points_surface.txt";
 	const auto points = read_points_from_file<Point3D>(file_path);
 	
-	const double a_initial = 2.0;
-	const double b_initial = 5.0;
-	const double c_initial = 6.0;
+	const double a_initial = 1.0;
+	const double b_initial = 1.0;
+	const double c_initial = 1.0;
 	
 	double a = a_initial;
 	double b = b_initial;
@@ -50,7 +50,7 @@ int main(int argc, char** argv)
 			new ceres::AutoDiffCostFunction<SurfaceCostFunction, 1, 1, 1, 1>(
 				new SurfaceCostFunction(point)
 			),
-			nullptr, &c, &a, &b
+			nullptr, &a, &b, &c
 		);
 	}
 	ceres::Solver::Options options;
