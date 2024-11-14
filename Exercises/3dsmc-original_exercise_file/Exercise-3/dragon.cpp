@@ -21,6 +21,7 @@ struct RegistrationCostFunction
 		//residual[0] = point.y - ceres::exp(-(ceres::pow(point.x - mu[0], T(2)) / (T(2) * ceres::pow(sigma[0], T(2)))));;
 		//residual[0] = (-c[0] * point.z) + (ceres::pow(point.x, T(2))/a[0]) - (ceres::pow(point.y, T(2))/b[0]);
 		 // 对于每个weight 都要计算残差并且求和才是一2dpoint的残差值{from结构体}
+		//如果想要auto 自动loop weights实例， 就需要用我自己写的util 里面的point。h中的weigth结构体 毕竟我改成了vector
 		for (const auto& weight : weights) {
         	// 遍历 Weight 中的每个权重值
         		for (const auto& single_weight : weight.w) {
