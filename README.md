@@ -6,3 +6,8 @@ Please follow [here](https://github.com/marcbenedi/3dsmc-env?tab=readme-ov-file)
 You can find corresponding files under:  
 Original files：\3D_Scanning_and_Motion_Capture\Exercises\3dsmc-original_exercise_file  
 Submission: : \3D_Scanning_and_Motion_Capture\Exercises\3dsmc-submission
+# Exercise included
+- Exercise 1: point cloud mesh
+- Exercise 2: fine mesh
+- Exercise 3: Optimization
+- To be added ...
