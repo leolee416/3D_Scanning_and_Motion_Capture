@@ -25,13 +25,12 @@ struct RegistrationCostFunction
 		for (const auto& weight : weights) {
         	// 遍历 Weight 中的每个权重值
         		for (const auto& single_weight : weight.w) {
-            			residual[0] += single_weight * ceres::pow(
-               		        (ceres::cos(angle[0]) * point1.x - ceres::sin(angle[0]) * point1.y + tx[0] - point2.x) +
-                                (ceres::sin(angle[0]) * point1.x + ceres::cos(angle[0]) * point1.y + ty[0] - point2.y),
-                                 T(2.0)
-            	                );
-        	        }
-    	        }
+            			residual[0] += single_weight *  ceres::pow(
+					ceres::pow((ceres::cos(angle[0]) * point1.x - ceres::sin(angle[0]) * point1.y + tx[0] - point2.x), T(2.0)) +
+					ceres::pow((ceres::sin(angle[0]) * point1.x + ceres::cos(angle[0]) * point1.y + ty[0] - point2.y), T(2.0))
+					, T(0.5));
+        		}
+    		}
 
 		return true;
 	}
@@ -73,7 +72,7 @@ int main(int argc, char** argv)
 
 				problem.AddResidualBlock(
 					new ceres::AutoDiffCostFunction<RegistrationCostFunction, 1, 1, 1, 1>(  // 第一个1 代表残差维度是1
-						new RegistrationCostFunction(points2[i], points1[i], weights) 
+						new RegistrationCostFunction(points1[i], points2[i], weights) 
 					// 卧槽 这个b点我得多试几次 我哪里知道谁先谁后呀况且这个weight估计是老师自己已经拟合好的数据所以point12必须有个先后顺序，只能画图试试
 					//很可惜 我的matlabTUM证书居然过期了， ，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，
 					),
