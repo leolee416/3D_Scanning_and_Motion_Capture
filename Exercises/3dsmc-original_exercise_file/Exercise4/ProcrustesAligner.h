@@ -23,7 +23,7 @@ public:
         estimatedPose.block<3, 3>(0, 0) = rotation;
         estimatedPose.block<3, 1>(0, 3) = translation;
 
-		//Matrix4f estimatedPose = Matrix4f::Identity();
+
 		return estimatedPose;
 	}
 
@@ -37,8 +37,6 @@ private:
         }
         return mean / static_cast<float>(points.size());
 
-		//Vector3f mean = Vector3f::Zero();
-		//return mean;
 	}
 
 	Matrix3f estimateRotation(const std::vector<Vector3f>& sourcePoints, const Vector3f& sourceMean, const std::vector<Vector3f>& targetPoints, const Vector3f& targetMean) {
@@ -66,14 +64,12 @@ private:
         }
 
         return rotation;
-		//Matrix3f rotation = Matrix3f::Identity(); 
-        //return rotation;
+		
 	}
 
 	Vector3f computeTranslation(const Vector3f& sourceMean, const Vector3f& targetMean, const Matrix3f& rotation) {
 		// TODO: Compute the translation vector from source to target points.
 		return targetMean - rotation * sourceMean;
-		//Vector3f translation = Vector3f::Zero();
-        //return translation;
+		
 	}
 };
