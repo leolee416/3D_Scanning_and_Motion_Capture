@@ -1,0 +1,3 @@
+/config/workspace/Exercise3/build3/CMakeFiles/dragon.dir
+/config/workspace/Exercise3/build3/CMakeFiles/edit_cache.dir
+/config/workspace/Exercise3/build3/CMakeFiles/rebuild_cache.dir

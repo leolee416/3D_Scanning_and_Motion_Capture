@@ -1,0 +1,3 @@
+/config/workspace/Exercise3/build/CMakeFiles/gaussian.dir
+/config/workspace/Exercise3/build/CMakeFiles/edit_cache.dir
+/config/workspace/Exercise3/build/CMakeFiles/rebuild_cache.dir
