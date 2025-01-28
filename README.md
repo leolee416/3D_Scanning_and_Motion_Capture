@@ -10,4 +10,22 @@ Submission: : \3D_Scanning_and_Motion_Capture\Exercises\3dsmc-submission
 - Exercise 1: point cloud mesh
 - Exercise 2: fine mesh
 - Exercise 3: Optimization
-- To be added ...
+- Exercise 4: 
+- Exercise 5: 
+
+# Project: Kinetic Fusion
+The goal of this project is to re-implement the KinectFusion algorithm as described in the original paper KinectFusion: Real-Time Dense Surface Mapping and Tracking [Paper KinectFusion](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/kinectfusion-uist-comp.pdf).
+
+## Rrerequisites
+The coded can be compiled on Linux 24.04 with OpenCV and CUDA(CUDA Version: 12.2 using GPＵ:Nvidia gtx 1070)
+- NVIDA GPU with [CUDA](https://developer.nvidia.com/cuda-downloads) support
+- [OpenCV](http://opencv.org/) (tested with OpenCV 2.4.11)
+
+## Build 
+bash on Ubuntu:
+```bash
+chmod -x compile_local.sh
+./compile_local.sh
+```
+
+
