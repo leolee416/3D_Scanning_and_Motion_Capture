@@ -20,6 +20,10 @@ The goal of this project is to re-implement the KinectFusion algorithm as descri
 The coded can be compiled on Linux 24.04 with OpenCV and CUDA(CUDA Version: 12.2 using GPＵ:Nvidia gtx 1070)
 - NVIDA GPU with [CUDA](https://developer.nvidia.com/cuda-downloads) support
 - [OpenCV](http://opencv.org/) (tested with OpenCV 2.4.11)
+For mesh generation:
+- numpy
+- skimage
+- plyfile
 
 ## Build 
 bash on Ubuntu:
@@ -27,5 +31,16 @@ bash on Ubuntu:
 chmod -x compile_local.sh
 ./compile_local.sh
 ```
+
+## Run
+TSDF voxel and weights generation:
+```bash
+./KineticFusion
+```
+mesh fusion:
+```bash
+python tsdf2mesh.py
+```
+Then you can check the Mesh by using tools like meshlab.
 
 
