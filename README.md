@@ -10,8 +10,8 @@ Submission: : \3D_Scanning_and_Motion_Capture\Exercises\3dsmc-submission
 - Exercise 1: point cloud mesh
 - Exercise 2: fine mesh
 - Exercise 3: Optimization
-- Exercise 4: 
-- Exercise 5: 
+- Exercise 4: Procruste alignment
+- Exercise 5: ICP registration
 
 # Project: Kinetic Fusion
 The goal of this project is to re-implement the KinectFusion algorithm as described in the original paper KinectFusion: Real-Time Dense Surface Mapping and Tracking [Paper KinectFusion](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/kinectfusion-uist-comp.pdf).
